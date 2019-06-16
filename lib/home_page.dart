@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Container(
       child: Center(
 //        child: SizedBox.expand(child: _buildImage()),
-        child: _buildImage(),
+        child: _buildButton(),
       ),
     );
   }
@@ -40,5 +40,23 @@ class HomePage extends StatelessWidget {
       'assets/images/dog4.png',
       fit: BoxFit.cover,
     );
+  }
+
+  RaisedButton _buildButton() {
+    return RaisedButton(
+      color: Colors.blue,
+      onPressed: _onPressedOk,
+      child: Text(
+        'ok',
+        style: TextStyle(
+          fontSize: 30.0,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  void _onPressedOk() {
+    print('botao ok pressionado');
   }
 }
