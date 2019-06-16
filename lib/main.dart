@@ -22,7 +22,20 @@ class HomePage extends StatelessWidget {
         title: Text('Hello Flutter'),
       ),
       body: Container(
-        color: Colors.red,
+        child: Center(
+          child: Text(
+            'Hello world',
+            style: TextStyle(
+              fontSize: 30.0,
+              color: Colors.blue,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              decoration: TextDecoration.underline,
+              decorationStyle: TextDecorationStyle.wavy,
+              decorationColor: Colors.red,
+            ),
+          ),
+        ),
       ),
     );
   }
