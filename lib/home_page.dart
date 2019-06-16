@@ -14,23 +14,31 @@ class HomePage extends StatelessWidget {
   Container _buildBody() {
     return Container(
       child: Center(
-        child: _buildText(),
+//        child: SizedBox.expand(child: _buildImage()),
+        child: _buildImage(),
       ),
     );
   }
 
   Text _buildText() {
     return Text(
-        'Hello world',
-        style: TextStyle(
-          fontSize: 30.0,
-          color: Colors.blue,
-          fontWeight: FontWeight.bold,
-          fontStyle: FontStyle.italic,
-          decoration: TextDecoration.underline,
-          decorationStyle: TextDecorationStyle.wavy,
-          decorationColor: Colors.red,
-        ),
-      );
+      'Hello world',
+      style: TextStyle(
+        fontSize: 30.0,
+        color: Colors.blue,
+        fontWeight: FontWeight.bold,
+        fontStyle: FontStyle.italic,
+        decoration: TextDecoration.underline,
+        decorationStyle: TextDecorationStyle.wavy,
+        decorationColor: Colors.red,
+      ),
+    );
+  }
+
+  Image _buildImage() {
+    return Image.asset(
+      'assets/images/dog4.png',
+      fit: BoxFit.cover,
+    );
   }
 }
