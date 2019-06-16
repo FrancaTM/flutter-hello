@@ -7,22 +7,30 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Hello Flutter'),
       ),
-      body: Container(
-        child: Center(
-          child: Text(
-            'Hello world',
-            style: TextStyle(
-              fontSize: 30.0,
-              color: Colors.blue,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              decoration: TextDecoration.underline,
-              decorationStyle: TextDecorationStyle.wavy,
-              decorationColor: Colors.red,
-            ),
-          ),
-        ),
+      body: _buildBody(),
+    );
+  }
+
+  Container _buildBody() {
+    return Container(
+      child: Center(
+        child: _buildText(),
       ),
     );
+  }
+
+  Text _buildText() {
+    return Text(
+        'Hello world',
+        style: TextStyle(
+          fontSize: 30.0,
+          color: Colors.blue,
+          fontWeight: FontWeight.bold,
+          fontStyle: FontStyle.italic,
+          decoration: TextDecoration.underline,
+          decorationStyle: TextDecorationStyle.wavy,
+          decorationColor: Colors.red,
+        ),
+      );
   }
 }
