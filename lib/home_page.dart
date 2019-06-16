@@ -15,7 +15,14 @@ class HomePage extends StatelessWidget {
     return Container(
       child: Center(
 //        child: SizedBox.expand(child: _buildImage()),
-        child: _buildButton(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildImage(),
+            _buildText(),
+            _buildButton(),
+          ],
+        ),
       ),
     );
   }
