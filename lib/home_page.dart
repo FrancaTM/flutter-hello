@@ -20,7 +20,14 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             _buildImage(),
             _buildText(),
-            _buildButton(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildButton('ok 1', () => print('clicou ok 1')),
+                _buildButton('ok 2', () => print('clicou ok 2')),
+                _buildButton('ok 3', () => print('clicou ok 3')),
+              ],
+            ),
           ],
         ),
       ),
@@ -49,12 +56,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  RaisedButton _buildButton() {
+  RaisedButton _buildButton(String s, Function onPressedOk) {
     return RaisedButton(
       color: Colors.blue,
-      onPressed: _onPressedOk,
+      onPressed: onPressedOk,
       child: Text(
-        'ok',
+        '$s',
         style: TextStyle(
           fontSize: 30.0,
           color: Colors.white,
