@@ -18,19 +18,38 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _buildImage(),
             _buildText(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _buildButton('ok 1', () => print('clicou ok 1')),
-                _buildButton('ok 2', () => print('clicou ok 2')),
-                _buildButton('ok 3', () => print('clicou ok 3')),
-              ],
-            ),
+            _buildPageView(),
+            _buildButtonsRow(),
           ],
         ),
       ),
+    );
+  }
+
+  SizedBox _buildPageView() {
+    return SizedBox(
+      height: 300,
+      child: PageView(
+        children: <Widget>[
+          _buildImage('assets/images/dog1.png'),
+          _buildImage('assets/images/dog2.png'),
+          _buildImage('assets/images/dog3.png'),
+          _buildImage('assets/images/dog4.png'),
+          _buildImage('assets/images/dog5.png'),
+        ],
+      ),
+    );
+  }
+
+  Row _buildButtonsRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _buildButton('ok 1', () => print('clicou ok 1')),
+        _buildButton('ok 2', () => print('clicou ok 2')),
+        _buildButton('ok 3', () => print('clicou ok 3')),
+      ],
     );
   }
 
@@ -49,9 +68,9 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Image _buildImage() {
+  Image _buildImage(String image) {
     return Image.asset(
-      'assets/images/dog4.png',
+      image,
       fit: BoxFit.cover,
     );
   }
