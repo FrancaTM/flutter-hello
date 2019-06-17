@@ -113,13 +113,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   _onPressedPage(Widget page) async {
-    String s = await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => page));
+    Future<String> future =
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
 
-    if (s != null) {
-      setState(() {
-        _msg = s;
-      });
-    }
+    future.then((s) {
+      if (s != null) {
+        setState(() {
+          _msg = s;
+        });
+      }
+    });
   }
 }
