@@ -15,11 +15,14 @@ class HomePage extends StatelessWidget {
     return Container(
       child: Center(
 //        child: SizedBox.expand(child: _buildImage()),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: ListView(
           children: <Widget>[
             _buildText(),
-            _buildPageView(),
+            _buildImage('assets/images/dog1.png'),
+            _buildImage('assets/images/dog2.png'),
+            _buildImage('assets/images/dog3.png'),
+            _buildImage('assets/images/dog4.png'),
+            _buildImage('assets/images/dog5.png'),
             _buildButtonsRow(),
           ],
         ),
