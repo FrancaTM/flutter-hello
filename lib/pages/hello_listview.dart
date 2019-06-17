@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
 
-class HelloListView extends StatelessWidget {
+class HelloListView extends StatefulWidget {
+  @override
+  _HelloListViewState createState() => _HelloListViewState();
+}
+
+class _HelloListViewState extends State<HelloListView> {
+//  var _numColumns = 1;
+  var _gridOn = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('ListView & GridView'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.list),
+            onPressed: () {
+              setState(() {
+//                _numColumns = 1;
+                _gridOn = false;
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.grid_on),
+            onPressed: () {
+              setState(() {
+//                _numColumns = 2;
+                _gridOn = true;
+              });
+            },
+          ),
+        ],
       ),
       body: Container(
         child: _buildListView(),
@@ -22,22 +50,22 @@ class HelloListView extends StatelessWidget {
       print(s);
     }
 
-    return GridView.builder(
-      gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemCount: dogs.length,
-      itemBuilder: (context, index) {
-        return _buildListItem(dogs, index);
-      },
-    );
-
-    /*return ListView.builder(
-      itemExtent: 250,
-      itemCount: dogs.length,
-      itemBuilder: (context, index) {
-        return _buildListItem(dogs, index);
-      },
-    );*/
+    return _gridOn
+        ? GridView.builder(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            itemCount: dogs.length,
+            itemBuilder: (context, index) {
+              return _buildListItem(dogs, index);
+            },
+          )
+        : ListView.builder(
+            itemExtent: 250,
+            itemCount: dogs.length,
+            itemBuilder: (context, index) {
+              return _buildListItem(dogs, index);
+            },
+          );
   }
 
   Widget _buildListItem(List<String> dogs, int index) {
