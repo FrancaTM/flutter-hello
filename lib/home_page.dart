@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/pages/hello_page1.dart';
+import 'package:flutter_hello/pages/hello_page2.dart';
+import 'package:flutter_hello/pages/hello_page3.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,9 +62,9 @@ class _HomePageState extends State<HomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        _buildButton('ok 1', () => _onPressedOk('clicou ok 1')),
-        _buildButton('ok 2', () => _onPressedOk('clicou ok 2')),
-        _buildButton('ok 3', () => _onPressedOk('clicou ok 3')),
+        _buildButton('Page 1', () => _onPressedPage(HelloPage1())),
+        _buildButton('Page 2', () => _onPressedPage(HelloPage2())),
+        _buildButton('Page 3', () => _onPressedPage(HelloPage3())),
       ],
     );
   }
@@ -107,5 +110,9 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _msg = s;
     });
+  }
+
+  _onPressedPage(Widget page) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 }
