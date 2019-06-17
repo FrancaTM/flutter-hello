@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _msg = 'Hello world';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,14 +22,11 @@ class HomePage extends StatelessWidget {
     return Container(
       child: Center(
 //        child: SizedBox.expand(child: _buildImage()),
-        child: ListView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _buildText(),
-            _buildImage('assets/images/dog1.png'),
-            _buildImage('assets/images/dog2.png'),
-            _buildImage('assets/images/dog3.png'),
-            _buildImage('assets/images/dog4.png'),
-            _buildImage('assets/images/dog5.png'),
+            _buildPageView(),
             _buildButtonsRow(),
           ],
         ),
@@ -30,19 +34,22 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SizedBox _buildPageView() {
-    return SizedBox(
-      height: 300,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: PageView(
-          children: <Widget>[
-            _buildImage('assets/images/dog1.png'),
-            _buildImage('assets/images/dog2.png'),
-            _buildImage('assets/images/dog3.png'),
-            _buildImage('assets/images/dog4.png'),
-            _buildImage('assets/images/dog5.png'),
-          ],
+  Widget _buildPageView() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 300,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: PageView(
+            children: <Widget>[
+              _buildImage('assets/images/dog1.png'),
+              _buildImage('assets/images/dog2.png'),
+              _buildImage('assets/images/dog3.png'),
+              _buildImage('assets/images/dog4.png'),
+              _buildImage('assets/images/dog5.png'),
+            ],
+          ),
         ),
       ),
     );
@@ -52,16 +59,16 @@ class HomePage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        _buildButton('ok 1', () => print('clicou ok 1')),
-        _buildButton('ok 2', () => print('clicou ok 2')),
-        _buildButton('ok 3', () => print('clicou ok 3')),
+        _buildButton('ok 1', () => _onPressedOk('clicou ok 1')),
+        _buildButton('ok 2', () => _onPressedOk('clicou ok 2')),
+        _buildButton('ok 3', () => _onPressedOk('clicou ok 3')),
       ],
     );
   }
 
   Text _buildText() {
     return Text(
-      'Hello world',
+      _msg,
       style: TextStyle(
         fontSize: 30.0,
         color: Colors.blue,
@@ -95,7 +102,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _onPressedOk() {
-    print('botao ok pressionado');
+  void _onPressedOk(String s) {
+    print(s);
+    setState(() {
+      _msg = s;
+    });
   }
 }
