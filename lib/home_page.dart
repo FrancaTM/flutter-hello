@@ -30,14 +30,17 @@ class HomePage extends StatelessWidget {
   SizedBox _buildPageView() {
     return SizedBox(
       height: 300,
-      child: PageView(
-        children: <Widget>[
-          _buildImage('assets/images/dog1.png'),
-          _buildImage('assets/images/dog2.png'),
-          _buildImage('assets/images/dog3.png'),
-          _buildImage('assets/images/dog4.png'),
-          _buildImage('assets/images/dog5.png'),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: PageView(
+          children: <Widget>[
+            _buildImage('assets/images/dog1.png'),
+            _buildImage('assets/images/dog2.png'),
+            _buildImage('assets/images/dog3.png'),
+            _buildImage('assets/images/dog4.png'),
+            _buildImage('assets/images/dog5.png'),
+          ],
+        ),
       ),
     );
   }
