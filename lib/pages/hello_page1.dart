@@ -10,7 +10,12 @@ class HelloPage1 extends StatelessWidget {
       body: Container(
         color: Colors.yellow,
         child: Center(
-          child: Text('Page 1'),
+          child: RaisedButton(
+            child: Text('Voltar'),
+            onPressed: () {
+              Navigator.pop(context, 'clicou no voltar');
+            },
+          ),
         ),
       ),
     );
