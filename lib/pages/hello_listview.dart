@@ -6,7 +6,6 @@ class HelloListView extends StatefulWidget {
 }
 
 class _HelloListViewState extends State<HelloListView> {
-//  var _numColumns = 1;
   var _gridOn = false;
 
   @override
@@ -14,26 +13,7 @@ class _HelloListViewState extends State<HelloListView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('ListView & GridView'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.list),
-            onPressed: () {
-              setState(() {
-//                _numColumns = 1;
-                _gridOn = false;
-              });
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.grid_on),
-            onPressed: () {
-              setState(() {
-//                _numColumns = 2;
-                _gridOn = true;
-              });
-            },
-          ),
-        ],
+        actions: _getActions(),
       ),
       body: Container(
         child: _buildListView(),
@@ -90,5 +70,35 @@ class _HelloListViewState extends State<HelloListView> {
       image,
       fit: BoxFit.cover,
     );
+  }
+
+  List<Widget> _getActions() {
+    List<Widget> actions = [];
+
+    if (_gridOn) {
+      actions.add(
+        IconButton(
+          icon: Icon(Icons.list),
+          onPressed: () {
+            setState(() {
+              _gridOn = false;
+            });
+          },
+        ),
+      );
+    } else {
+      actions.add(
+        IconButton(
+          icon: Icon(Icons.grid_on),
+          onPressed: () {
+            setState(() {
+              _gridOn = true;
+            });
+          },
+        ),
+      );
+    }
+
+    return actions;
   }
 }
