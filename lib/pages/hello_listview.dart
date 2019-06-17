@@ -5,7 +5,7 @@ class HelloListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello ListView'),
+        title: Text('ListView & GridView'),
       ),
       body: Container(
         child: _buildListView(),
@@ -22,25 +22,38 @@ class HelloListView extends StatelessWidget {
       print(s);
     }
 
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      itemCount: dogs.length,
+      itemBuilder: (context, index) {
+        return _buildListItem(dogs, index);
+      },
+    );
+
+    /*return ListView.builder(
       itemExtent: 250,
       itemCount: dogs.length,
       itemBuilder: (context, index) {
-        return Stack(
-          children: <Widget>[
-            SizedBox.expand(child: _buildImage(dogs[index])),
-            Container(
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(color: Colors.black26),
-              child: Text(
-                'Dog ${index + 1}',
-                style: TextStyle(fontSize: 25.0, color: Colors.white),
-              ),
-            ),
-          ],
-        );
+        return _buildListItem(dogs, index);
       },
+    );*/
+  }
+
+  Widget _buildListItem(List<String> dogs, int index) {
+    return Stack(
+      children: <Widget>[
+        SizedBox.expand(child: _buildImage(dogs[index])),
+        Container(
+          margin: EdgeInsets.all(20),
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(color: Colors.black26),
+          child: Text(
+            'Dog ${index + 1}',
+            style: TextStyle(fontSize: 25.0, color: Colors.white),
+          ),
+        ),
+      ],
     );
   }
 
