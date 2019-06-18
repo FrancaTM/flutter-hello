@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hello/pages/hello_listview.dart';
 import 'package:flutter_hello/pages/hello_page2.dart';
 import 'package:flutter_hello/pages/hello_page3.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -156,7 +157,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _onPressedToast() {}
+  _onPressedToast() {
+    Fluttertoast.showToast(
+      msg: "This is Center Long Toast",
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIos: 5,
+      backgroundColor: Colors.black45,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 
   _onPressedDialog(BuildContext context) {
     showDialog(
