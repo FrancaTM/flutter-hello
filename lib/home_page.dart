@@ -158,5 +158,30 @@ class _HomePageState extends State<HomePage> {
 
   _onPressedToast() {}
 
-  _onPressedDialog(BuildContext context) {}
+  _onPressedDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Alert dialog test'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop(context);
+              },
+              child: Text('Cancelar'),
+            ),
+            FlatButton(
+              onPressed: () {
+                print('ok');
+                Navigator.of(context).pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
