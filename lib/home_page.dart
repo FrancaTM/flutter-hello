@@ -17,11 +17,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Hello Flutter'),
       ),
-      body: _buildBody(),
+      body: Builder(
+        builder: (context) {
+          return _buildBody(context);
+        },
+      ),
     );
   }
 
-  Container _buildBody() {
+  Container _buildBody(BuildContext context) {
     return Container(
       child: Center(
 //        child: SizedBox.expand(child: _buildImage()),
@@ -30,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             _buildText(),
             _buildPageView(),
-            _buildButtonsRow(),
+            _buildButtonsRow(context),
           ],
         ),
       ),
@@ -58,13 +62,25 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Row _buildButtonsRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  Column _buildButtonsRow(BuildContext context) {
+    return Column(
       children: <Widget>[
-        _buildButton('ListView', () => _onPressedPage(HelloListView())),
-        _buildButton('Page 2', () => _onPressedPage(HelloPage2())),
-        _buildButton('Page 3', () => _onPressedPage(HelloPage3())),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildButton('ListView', () => _onPressedPage(HelloListView())),
+            _buildButton('Page 2', () => _onPressedPage(HelloPage2())),
+            _buildButton('Page 3', () => _onPressedPage(HelloPage3())),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildButton('Snack', () => _onPressedSnack(context)),
+            _buildButton('Dialog', () => _onPressedDialog(context)),
+            _buildButton('Toast', () => _onPressedToast()),
+          ],
+        ),
       ],
     );
   }
@@ -124,4 +140,23 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
+
+  _onPressedSnack(BuildContext context) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Apenas um teste'),
+        action: SnackBarAction(
+          label: 'OK',
+          textColor: Colors.purpleAccent,
+          onPressed: () {
+            print('OK!');
+          },
+        ),
+      ),
+    );
+  }
+
+  _onPressedToast() {}
+
+  _onPressedDialog(BuildContext context) {}
 }
