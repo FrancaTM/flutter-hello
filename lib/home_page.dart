@@ -23,15 +23,22 @@ class _HomePageState extends State<HomePage> {
           return _buildBody(context);
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          print('adicionar');
+        },
+      ),
     );
   }
 
   Container _buildBody(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(bottom: 60),
       child: Center(
 //        child: SizedBox.expand(child: _buildImage()),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             _buildText(),
             _buildPageView(),
