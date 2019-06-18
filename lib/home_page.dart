@@ -29,6 +29,10 @@ class _HomePageState extends State<HomePage> {
           print('adicionar');
         },
       ),
+      drawer: Container(
+        color: Colors.purple,
+        width: 350,
+      ),
     );
   }
 
