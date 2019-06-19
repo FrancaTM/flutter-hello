@@ -15,22 +15,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Hello Flutter'),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Hello Flutter'),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(text: 'Tab 1', icon: Icon(Icons.map)),
+              Tab(text: 'Tab 2', icon: Icon(Icons.star)),
+              Tab(text: 'Tab 3', icon: Icon(Icons.cake)),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            Builder(builder: (context) {
+              return _buildBody(context);
+            }),
+            Container(color: Colors.purple),
+            Container(color: Colors.purpleAccent),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            print('adicionar');
+          },
+        ),
+        drawer: DrawerList(),
       ),
-      body: Builder(
-        builder: (context) {
-          return _buildBody(context);
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          print('adicionar');
-        },
-      ),
-      drawer: DrawerList(),
     );
   }
 
@@ -55,7 +69,7 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 300,
+        height: 220,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: PageView(
@@ -99,7 +113,7 @@ class _HomePageState extends State<HomePage> {
     return Text(
       _msg,
       style: TextStyle(
-        fontSize: 30.0,
+        fontSize: 20.0,
         color: Colors.blue,
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,
@@ -124,7 +138,7 @@ class _HomePageState extends State<HomePage> {
       child: Text(
         '$s',
         style: TextStyle(
-          fontSize: 30.0,
+          fontSize: 18.0,
           color: Colors.white,
         ),
       ),
