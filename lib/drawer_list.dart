@@ -9,6 +9,12 @@ class DrawerList extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text('Túlio Marcos'),
+              accountEmail: Text('teste@teste.com.br'),
+              currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/dog1.png')),
+            ),
             ListTile(
               onTap: () {
                 print('item 1');
