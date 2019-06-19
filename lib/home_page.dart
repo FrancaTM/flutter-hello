@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/drawer_list.dart';
 import 'package:flutter_hello/pages/hello_listview.dart';
 import 'package:flutter_hello/pages/hello_page2.dart';
 import 'package:flutter_hello/pages/hello_page3.dart';
@@ -29,10 +30,7 @@ class _HomePageState extends State<HomePage> {
           print('adicionar');
         },
       ),
-      drawer: Container(
-        color: Colors.purple,
-        width: 350,
-      ),
+      drawer: DrawerList(),
     );
   }
 
